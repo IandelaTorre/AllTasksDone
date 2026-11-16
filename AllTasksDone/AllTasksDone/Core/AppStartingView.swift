@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import FactoryKit
 
 struct AppStartingView: View {
+    // MARK: - PROPERTIES
+
+    // MARK: - BODY
     var body: some View {
         VStack {
             Image(systemName: "globe")
