@@ -10,16 +10,21 @@ import FactoryKit
 
 struct AppStartingView: View {
     // MARK: - PROPERTIES
-
+    @StateObject private var viewModel: AppStartingViewModel = .init()
+    
     // MARK: - BODY
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        Group {
+            switch viewModel.appState {
+            case .auth:
+                Text("Auth view")
+            case .app:
+                NavigationStack {
+                    Text("App")
+                }
+            }//: SWITCH
+        }//: GROUP
+        .animation(.spring, value: viewModel.appState)
     }
 }
 
